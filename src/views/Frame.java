@@ -1,5 +1,13 @@
 package views;
 
-public class Frame {
+import javax.swing.*;
 
+/**
+ * 
+ * @author Alexandre LENFANTIN
+ *
+ */
+public class Frame extends JFrame{
+	
+	
 }

@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import controllers.controller;
 import models.Date;
-import vue.JButton;
 
 /**
  * The {@code CalendarPanel} class from {@code view} package is class which allow to display a calendar based on month.
@@ -16,15 +16,21 @@ import vue.JButton;
  */
 public class CalendarPanel  extends JPanel implements commons.Constants, ActionListener{
 	JPanel centerPanel = new JPanel ( ) ;
-	
 	CardLayout gestCard = new CardLayout(10,10);
 	JButton [] tabButtons = new JButton[LABELS_BUTTONS.length];
+	
+	JButton  showButton = new JButton (BUTTON);
 	
 	public JLabel nameOfMonthLabel;
 	
 	public int monthIndex = 0;
 	
 	public MonthPanel [] monthPanel;
+	
+	public JComboBox<String> ports = new JComboBox<String>();
+	String oui [] = {"huit","neuf"};
+	
+	
 	
 	/**
 	 * Constructor of CalendarPanel
@@ -33,7 +39,9 @@ public class CalendarPanel  extends JPanel implements commons.Constants, ActionL
 		Date today = new Date ();
 		this.setLayout (new BorderLayout(9,9));
 		JPanel southPanel = new JPanel ( ) ;
+		JPanel northJpanel = new JPanel();
 		this.add(southPanel,BorderLayout.SOUTH);
+		this.add(northJpanel,BorderLayout.NORTH);
 		
 		//Center panel
 		this.add (centerPanel, BorderLayout.CENTER);
@@ -70,7 +78,34 @@ public class CalendarPanel  extends JPanel implements commons.Constants, ActionL
 		southPanel.setBackground (Color.white);	
 		setBackground (Color.white);
 		setPreferredSize(new Dimension (500,320));
-	}// of constructor
+		
+			
+		for (int i =0; i< oui.length;i++) {
+			ports.addItem(oui[i]);
+		}
+		northJpanel.add(ports);
+		 
+
+		showButton.setFont (new Font ("Verdana",Font.PLAIN,16));
+		showButton.setBackground(Color.lightGray);
+		showButton.setFocusPainted(false);
+		showButton.setMnemonic('S');
+		
+		northJpanel.add(showButton);
+		
+		
+	}// end of constructor
+	
+	
+	public String getPorts() {	
+		return (String) ports.getSelectedItem();
+				
+	}
+	
+	public JButton getShowButton()
+	{
+		return showButton;
+	}
 	
 	
 	/**
@@ -120,7 +155,7 @@ public class CalendarPanel  extends JPanel implements commons.Constants, ActionL
 			nameOfMonthLabel.setText(MONTHS_NAME[monthIndex]);
 			}// actionPerformed
 
-			public void enregistreEcouteur(Controller controller) {
+			public void recordListenner(controller controller) {
 				for (int monthIndex = 0 ; monthIndex< MONTHS_NAME.length ; monthIndex++)
 				{
 					for(DateButton bt : monthPanel[monthIndex].arJButton)
@@ -128,7 +163,7 @@ public class CalendarPanel  extends JPanel implements commons.Constants, ActionL
 						bt.addActionListener(controller);
 					}
 				}
+				showButton.addActionListener(controller);
 			}
-	
-
+			
 }

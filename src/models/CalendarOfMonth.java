@@ -27,17 +27,19 @@ public class CalendarOfMonth {
 	    for (int x = indiceDay ; x!=0 ; x--) {
 	    	treeSetDate.add(date);	    	
 	    	date = date.yesterdaysDate();
+	    	
 	    }	    
 	    date = new Date (2,parMonth,parYear);
 	    indiceDay = indiceDay % 7 ;
 	    while (date.getMonth () == parMonth) {
 	    	while(indiceDay<7) {
 	    		treeSetDate.add(date);
-	    		date = date.yesterdaysDate();
+	    		date = date.nextDaysDate();
 	    		indiceDay++ ;
 	    	} 
 	    	indiceDay=0;
 	    }
+	    
 	}
  
 	/**

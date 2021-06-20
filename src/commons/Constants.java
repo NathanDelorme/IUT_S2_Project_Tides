@@ -1,4 +1,7 @@
 package commons;
+
+import models.Date;
+
 /**
  * This class contain all constants we need in our code
  * 
@@ -36,6 +39,11 @@ public interface Constants {
      * Constant that contain the text for last button slide.
      */
 	final String LABEL_LAST = ">>";
+	
+	/**
+	* Constant that contains A string for a button
+	*/
+	final  String BUTTON = "SHOW";
 	 
 	final  String[] LABELS_BUTTONS = {LABEL_FIRST, LABEL_PREVIOUS, LABEL_NEXT, LABEL_LAST};
 		

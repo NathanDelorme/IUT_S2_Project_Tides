@@ -8,7 +8,7 @@ import java.util.*;
  * @author Alexandre LENFANTIN
  *
  */
-public class Date implements commons.Constants{
+public class Date implements commons.Constants, Comparable<Date>{
 	private int day;
 	private int month;
 	private int year;
@@ -118,35 +118,6 @@ public class Date implements commons.Constants{
 	 	return new Date().compareTo(this) == 0;
 	 }
 	 
-	 
-	  /**
-	   * return 0 if this and parDate are equals, 
-	   * -1 if this is before parDate,
-	   *  1 if parDate is before this.
-	   *  
-	   *  
-	   *  * @param  parDate
-	   *         compared date
-	   */
-	  public int compareTo (Date parDate) {
-	    if (year < parDate.year)
-			return -1;
-		if (year > parDate.year)
-			return 1;
-		
-		if (month < parDate.month)
-			return -1;
-		if (month > parDate.month)
-			return 1;
-		
-		if (day < parDate.day)
-			return -1;
-		if (day > parDate.day)
-			return 1;
-		return 0;	
-	  }
-	 
-	  
 	  /**
 	   * return the first day of the week.
 	   * @return Date
@@ -206,5 +177,36 @@ public class Date implements commons.Constants{
 	 */
 	public String toString () {
 		  return  DAYS_NAME[dayofWeek -1] + " " + day + " " + MONTHS_NAME[month-1];	  
-	 }  
+	 }
+	
+	/**
+	   * return 0 if this and parDate are equals, 
+	   * -1 if this is before parDate,
+	   *  1 if parDate is before this.
+	   *  
+	   *  
+	   *  * @param  parDate
+	   *         compared date
+	   *        
+	   */
+	@Override
+	public int compareTo(Date parDate) {
+		 if (year < parDate.year)
+				return -1;
+			if (year > parDate.year)
+				return 1;
+			
+			if (month < parDate.month)
+				return -1;
+			if (month > parDate.month)
+				return 1;
+			
+			if (day < parDate.day)
+				return -1;
+			if (day > parDate.day)
+				return 1;
+			return 0;	
+		// TODO Auto-generated method stub
+	}
+ 
 }

@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 
 public class MotherFrame extends JFrame  implements commons.Constants{
+	
 	public MotherFrame (String parTitre) {
 		super (parTitre);
 		

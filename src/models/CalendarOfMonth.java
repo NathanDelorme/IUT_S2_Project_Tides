@@ -1,7 +1,7 @@
 package models;
 import java.util.*;
 /**
- *The {@code CalendrierDuMois} class from {@code modele} package create a treeset which contain all day from a month of a year. 
+ *The {@code CalendarOfMonth} class from {@code modele} package create a treeset which contain all day from a month of a year. 
  * @author Alexandre LENFANTIN
  *
  */
@@ -16,9 +16,9 @@ public class CalendarOfMonth {
 	/**
 	 * Constructor who build the collection treeSetDate.
 	 * @param mois
-	 * 			mois of the year
+	 * 			month of the year
 	 * @param annee
-	 * 			annee value
+	 * 			year value
 	 */
 	public CalendarOfMonth (int parMonth, int parYear) {
 		treeSetDate = new TreeSet <Date> ();

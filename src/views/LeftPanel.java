@@ -14,7 +14,7 @@ import models.Date;
  * @author Alexandre LENFANTIN
  *
  */
-public class CalendarPanel  extends JPanel implements commons.Constants, ActionListener{
+public class LeftPanel  extends JPanel implements commons.Constants, ActionListener{
 	JPanel centerPanel = new JPanel ( ) ;
 	CardLayout gestCard = new CardLayout(10,10);
 	JButton [] tabButtons = new JButton[LABELS_BUTTONS.length];
@@ -33,9 +33,11 @@ public class CalendarPanel  extends JPanel implements commons.Constants, ActionL
 	
 	
 	/**
-	 * Constructor of CalendarPanel
+	 * Constructor of CalendarPanel.
+	 * In this method two panel are used. 
+	 * The first one is for Port's button and the second one is for the Calendar
 	 */
-	public CalendarPanel() {
+	public LeftPanel() {
 		Date today = new Date ();
 		this.setLayout (new BorderLayout(9,9));
 		JPanel southPanel = new JPanel ( ) ;
@@ -96,12 +98,21 @@ public class CalendarPanel  extends JPanel implements commons.Constants, ActionL
 		
 	}// end of constructor
 	
-	
+	/**
+	   * return the name of the Port selected.
+	   * @return String
+	   * 	value string
+	   */
 	public String getPorts() {	
 		return (String) ports.getSelectedItem();
 				
 	}
 	
+	/**
+	   * return the button selected.
+	   * @return showButton
+	   * 	value showButton
+	   */
 	public JButton getShowButton()
 	{
 		return showButton;
@@ -109,7 +120,7 @@ public class CalendarPanel  extends JPanel implements commons.Constants, ActionL
 	
 	
 	/**
-	 * Change the display of the month when you click on button
+	 * Change the display of the month when you click on button and change the name of month.
 	 * 
 	 */
 	@Override

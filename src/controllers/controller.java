@@ -7,25 +7,26 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import models.Date;
-import views.CalendarPanel;
+import views.LeftPanel;
 import views.DateButton;
 
 /**
  * he {@code Controller} class from {@code controller} package is the Controller part of MVC agenda software.
  * @author Alexandre LENFANTIN
  *
- *@see view.CalendarPanel
- *@see view.PortsButtons 
+ *@see LeftPanel.CalendarPanel
+ * 
  * 
  */
 public class controller implements ActionListener {
 	
 	/**
-     * {@code atCalendarPanel} is a variable from {@code CalendarPanel} class. Contains a {@code JPanel} with the UI for select event day.
+     * Constructor of the class {@code controller}
+     * @param parCalendarPanel
      */
-	CalendarPanel atCalendarPanel;
+	LeftPanel atCalendarPanel;
 	
-	public controller (/*liste des horraires*/ CalendarPanel parCalendarPanel) {
+	public controller (/*liste des horraires*/ LeftPanel parCalendarPanel) {
 		
 		/*listes hooraires = parListeHorraire*/
 		atCalendarPanel = parCalendarPanel;
@@ -35,6 +36,12 @@ public class controller implements ActionListener {
 	}
 
 
+	/**
+	 * {@code @code controller} is a variable from {@code @code controller} class.
+	 * This actionPerformed allow to change date and port. With that we can switch between two
+	 * Table to display schedule and the advancement of tides.
+	 * 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent evt) {
 		

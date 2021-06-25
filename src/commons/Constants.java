@@ -44,6 +44,11 @@ public interface Constants {
 	* Constant that contains A string for a button
 	*/
 	final  String BUTTON = "SHOW";
+	
+	/**
+	* Constant that contains A string for a thumb in {@code TablePanel}
+	*/
+	final  String[] THUMB = {"Advancement","Schedule"};
 	 
 	final  String[] LABELS_BUTTONS = {LABEL_FIRST, LABEL_PREVIOUS, LABEL_NEXT, LABEL_LAST};
 		

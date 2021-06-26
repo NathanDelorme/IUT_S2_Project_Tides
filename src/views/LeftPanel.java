@@ -20,6 +20,7 @@ public class LeftPanel  extends JPanel implements commons.Constants, ActionListe
 	JButton [] tabButtons = new JButton[LABELS_BUTTONS.length];
 	
 	JButton  showButton = new JButton (BUTTON);
+	JButton  exitButton = new JButton ("Exit");
 	
 	public JLabel nameOfMonthLabel;
 	
@@ -65,7 +66,8 @@ public class LeftPanel  extends JPanel implements commons.Constants, ActionListe
 		nameOfMonthLabel.setPreferredSize(new Dimension (80,20)); 		 
 		nameOfMonthLabel.setFont (new Font ("Verdana",Font.PLAIN,14));	 
 		southPanel.add (nameOfMonthLabel);  
-			
+		
+		//instantiate all button on the calendar 
 		southPanel.setLayout (new FlowLayout ( FlowLayout.CENTER, 4,4));	
 			for (int i = 0 ; i< LABELS_BUTTONS.length ; i++)		{
 				tabButtons[i] = new JButton (LABELS_BUTTONS[i]);  
@@ -75,23 +77,34 @@ public class LeftPanel  extends JPanel implements commons.Constants, ActionListe
 				tabButtons[i].setBackground(Color.lightGray);
 				southPanel.add (tabButtons[i]) ;
 				}
-			
+		
+		//add calendar in panel
 		centerPanel.setBackground(Color.white);
 		southPanel.setBackground (Color.white);	
 		setBackground (Color.white);
 		setPreferredSize(new Dimension (500,320));
 		
-			
+		//instantiate Jcombobox 	
 		for (int i =0; i< oui.length;i++) {
 			ports.addItem(oui[i]);
 		}
 		northJpanel.add(ports);
 		 
-
+		// add exitButoon to northPanel on Leftpanel
+		exitButton.setFont (new Font ("Verdana",Font.PLAIN,16));
+		exitButton.setBackground(Color.lightGray);
+		exitButton.setFocusPainted(false);
+		exitButton.setMnemonic('E'); 
+		exitButton.setActionCommand("Exit") ; 
+		
+		northJpanel.add(exitButton);
+		
+		// add showButton to northPanel on Leftpanel
 		showButton.setFont (new Font ("Verdana",Font.PLAIN,16));
 		showButton.setBackground(Color.lightGray);
 		showButton.setFocusPainted(false);
 		showButton.setMnemonic('S');
+		exitButton.setActionCommand(BUTTON) ;
 		
 		northJpanel.add(showButton);
 		
@@ -116,6 +129,16 @@ public class LeftPanel  extends JPanel implements commons.Constants, ActionListe
 	public JButton getShowButton()
 	{
 		return showButton;
+	}
+	
+	/**
+	   * return the exit button.
+	   * @return exitButton
+	   * 	value exitButton
+	   */
+	public JButton getExitButton()
+	{
+		return exitButton;
 	}
 	
 	
@@ -167,6 +190,8 @@ public class LeftPanel  extends JPanel implements commons.Constants, ActionListe
 			}// actionPerformed
 
 			public void recordListenner(controller controller) {
+				showButton.addActionListener(controller);
+				exitButton.addActionListener(controller);
 				for (int monthIndex = 0 ; monthIndex< MONTHS_NAME.length ; monthIndex++)
 				{
 					for(DateButton bt : monthPanel[monthIndex].arJButton)
@@ -174,7 +199,7 @@ public class LeftPanel  extends JPanel implements commons.Constants, ActionListe
 						bt.addActionListener(controller);
 					}
 				}
-				showButton.addActionListener(controller);
+			
 			}
 			
 }

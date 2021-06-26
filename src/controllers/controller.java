@@ -32,7 +32,6 @@ public class controller implements ActionListener {
 		atCalendarPanel = parCalendarPanel;
 		
 		atCalendarPanel.recordListenner(this);
-		atCalendarPanel.recordListenner(this);
 	}
 
 
@@ -40,6 +39,7 @@ public class controller implements ActionListener {
 	 * {@code @code controller} is a variable from {@code @code controller} class.
 	 * This actionPerformed allow to change date and port. With that we can switch between two
 	 * Table to display schedule and the advancement of tides.
+	 * It can exit the gui with a button
 	 * 
 	 */
 	@Override
@@ -48,8 +48,22 @@ public class controller implements ActionListener {
 		 if (evt.getSource() == atCalendarPanel.getShowButton()) {
 			String str = atCalendarPanel.getPorts();
 			System.out.println(str);
-			JOptionPane.showMessageDialog(atCalendarPanel.getShowButton(),"oui");
+			/*JOptionPane.showMessageDialog(atCalendarPanel.getShowButton(),"oui");*/
 		}
+		 
+		 else if (evt.getSource() == atCalendarPanel.getExitButton()) {
+			 int grasped = JOptionPane.showConfirmDialog (atCalendarPanel,"Êtes-vous sûr de votre choix ?",
+					 "Dialogue de confirmation",JOptionPane.OK_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+			 switch (grasped) {
+			 	case JOptionPane.CLOSED_OPTION:
+			 		/*System.out.println ("Valeur retournée : " +grasped);*/break;
+			 	case JOptionPane.OK_OPTION:
+			 		System.exit(0);
+			 		/*System.out.println ("Valeur retournée : " +grasped);*/break;
+			 	case JOptionPane.CANCEL_OPTION:
+					/*System.out.println ("Valeur retournée : " +grasped); */break;
+				} // switch
+		 }
 		 
 		 else if(evt.getSource() instanceof DateButton)
 		{			
